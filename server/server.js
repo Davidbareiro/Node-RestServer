@@ -13,7 +13,19 @@ app.get('/usuario', function (req, res) {
 })
 
 app.post('/usuario', function (req, res) {
-    res.json('post usuario')
+    
+    let body = req.body;
+
+    if (body.nombre === undefined) {
+        res.status (400).json ({
+            ok:false, 
+            mensaje: "El nombre es obligatorio"
+        })
+    } else {
+        res.json ({
+            persona: body
+        })
+    }
   })
 
 
